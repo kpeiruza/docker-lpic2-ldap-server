@@ -30,7 +30,7 @@ libnss-ldap	libnss-ldap/binddn	string	cn=admin,dc=floss,dc=cat
 libnss-ldap	libnss-ldap/dbrootlogin	boolean	true
 libpam-ldap	libpam-ldap/rootbinddn	string	cn=admin,dc=floss,dc=cat
 libpam-ldap	libpam-ldap/binddn	string	cn=admin,dc=floss,dc=cat
-libnss-ldap	shared/ldapns/ldap-server	string	ldapi:///
-libpam-ldap	shared/ldapns/ldap-server	string	ldapi:///
+libnss-ldap	shared/ldapns/ldap-server	string	ldap://localhost/
+libpam-ldap	shared/ldapns/ldap-server	string	ldap://localhost/
 libpam-ldap	libpam-ldap/pam_password	select	crypt
 libpam-ldap	libpam-ldap/dbrootlogin	boolean	true

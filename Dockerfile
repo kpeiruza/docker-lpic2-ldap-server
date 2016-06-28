@@ -1,13 +1,18 @@
 FROM library/debian:jessie
 MAINTAINER kenneth@floss.cat
-ADD debconf-ldap.txt /tmp
+COPY debconf-ldap.txt /tmp
 #ADD supervisord.conf /etc
-RUN debconf-set-selections < /tmp/debconf-ldap.txt
-RUN apt-get -y update && \
+RUN	debconf-set-selections < /tmp/debconf-ldap.txt && \
+	rm /tmp/debconf-ldap.txt && \
+	apt-get -y update && \
 	apt-get -y upgrade && \
-	apt-get install -y slapd ldap-utils && \
+	apt-get install -y slapd ldap-utils libpam-ldap libnss-ldap ssh supervisor && \
+	sed -i "s/compat$/\0 ldap/" /etc/nsswitch.conf && \
+	mkdir /var/run/sshd && \
 	rm -rf /var/lib/apt/lists/*
-ADD slapd.sh /
-RUN chmod +x /slapd.sh
-CMD [ "/slapd.sh" ]
-EXPOSE 389:389
+#COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY slapd.sh /
+COPY tree.ldif /root/
+#	Initialize LDAP, add tree.ldif and then run SSH
+EXPOSE 22 389
+ENTRYPOINT ["/slapd.sh"]

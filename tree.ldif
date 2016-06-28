@@ -1,8 +1,8 @@
-db: ou=groups,REPLACETLD
+dn: ou=groups,REPLACETLD
 objectClass: OrganizationalUnit
 ou: groups
 
-db: ou=people,REPLACETLD
+dn: ou=people,REPLACETLD
 objectClass: OrganizationalUnit
 ou: people
 
