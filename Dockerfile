@@ -9,7 +9,8 @@ RUN	debconf-set-selections < /tmp/debconf-ldap.txt && \
 	apt-get install -y slapd ldap-utils libpam-ldap libnss-ldap ssh supervisor && \
 	sed -i "s/compat$/\0 ldap/" /etc/nsswitch.conf && \
 	mkdir /var/run/sshd && \
-	rm -rf /var/lib/apt/lists/*
+	rm -rf /var/lib/apt/lists/* && \
+	echo "session optional pam_mkhomedir.so umask=0077 skel=/etc/skel" >> /etc/pam.d/common-session
 #COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY slapd.sh /
 COPY tree.ldif /root/
