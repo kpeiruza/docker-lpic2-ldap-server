@@ -1,0 +1,35 @@
+db: ou=groups,REPLACETLD
+objectClass: OrganizationalUnit
+ou: groups
+
+db: ou=people,REPLACETLD
+objectClass: OrganizationalUnit
+ou: people
+
+dn: cn=ldapgroup,ou=groups,REPLACETLD
+objectClass: posixGroup
+cn: ldapgroup
+gidNumber: 10000
+
+#ldapuser / ldaptest
+dn: uid=ldapuser,ou=people,REPLACETLD
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: ldapuser
+sn: ldapuser
+givenName: ldapuser
+cn: ldapuser
+displayName: ldapuser
+uidNumber: 10000
+gidNumber: 10000
+userPassword: {SSHA}tLrFJbmjkzPkwOoEFgJMmJtdWcHP1KXF
+gecos: Usuario de pruebas de LDAP
+loginShell: /bin/bash
+homeDirectory: /home/ldapuser
+shadowExpire: -1
+shadowFlag: 0
+shadowWarning: 7
+shadowMin: 0
+shadowMax: 99999
+shadowLastChange: 15320
