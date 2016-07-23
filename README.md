@@ -7,6 +7,10 @@ You can connect through SSH with ldapuser / ldaptest
 Administer Base dc=floss,dc=cat:
 cn=admin,dc=floss,dc=cat / password
 
+Just launch it:
+
+*docker run --rm -t kpeiruza/lpic2-ldap-server*
+
 Try to:
 
 - Add new users and groups. You have an example at tree.ldif (ldapadd)
