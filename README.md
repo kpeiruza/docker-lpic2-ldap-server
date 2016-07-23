@@ -15,6 +15,6 @@ Just launch it:
 Try to:
 
 - ssh ldapuser@$(docker inspect  -f '{{ .NetworkSettings.IPAddress }}' lpic2ldap)
-- Add new users and groups with ldapadd. You have an example at tree.ldif (ldapadd)
+- Manage users and groups with ldapadd/ldapmodify/ldapdelete. You have an example LDIF at tree.ldif
 - Integrate your system's auth with this LDAP server (pam_ldap and libnss_ldap) (remember to launch the container with -p 389:389)
 - ...
