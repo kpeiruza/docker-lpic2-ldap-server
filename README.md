@@ -9,10 +9,12 @@ cn=admin,dc=floss,dc=cat / password
 
 Just launch it:
 
-*docker run --rm -t kpeiruza/lpic2-ldap-server*
+*docker run -p 389:389 --name lpic2ldap -d kpeiruza/lpic2-ldap-server*
+
 
 Try to:
 
-- Add new users and groups. You have an example at tree.ldif (ldapadd)
-- Integrate your system's auth with this LDAP server (pam_ldap and libnss_ldap)
+- ssh ldapuser@$(docker inspect  -f '{{ .NetworkSettings.IPAddress }}' lpic2ldap)
+- Add new users and groups with ldapadd. You have an example at tree.ldif (ldapadd)
+- Integrate your system's auth with this LDAP server (pam_ldap and libnss_ldap) (remember to launch the container with -p 389:389)
 - ...
