@@ -6,7 +6,7 @@ RUN	debconf-set-selections < /tmp/debconf-ldap.txt && \
 	rm /tmp/debconf-ldap.txt && \
 	apt-get -y update && \
 	apt-get -y upgrade && \
-	apt-get install -y slapd ldap-utils libpam-ldap libnss-ldap ssh && \
+	apt-get install -y --no-install-recomends slapd ldap-utils libpam-ldap libnss-ldap ssh && \
 	sed -i "s/compat$/\0 ldap/" /etc/nsswitch.conf && \
 	mkdir /var/run/sshd && \
 	rm -rf /var/lib/apt/lists/* && \
